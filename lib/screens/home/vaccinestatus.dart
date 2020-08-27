@@ -28,6 +28,7 @@ class VaccineStatus extends StatefulWidget {
 }
 
 class _VaccineStatusState extends State<VaccineStatus> {
+  PageController _controller = PageController(viewportFraction: 0.9);
   Future<List<VaccinePhaseStatusData>> vaccinePhaseStatusData() async {
     List<VaccinePhaseStatusData> listVaccinePhase = [];
 
@@ -66,6 +67,7 @@ class _VaccineStatusState extends State<VaccineStatus> {
           title: Text("Vaccine Status"),
         ),
         body: PageView(
+          controller: _controller,
           scrollDirection: Axis.horizontal,
           children: [
             listVaccineDetails(),
@@ -77,103 +79,148 @@ class _VaccineStatusState extends State<VaccineStatus> {
   }
 
   Widget listVaccinePhaseStatus() {
-    return FutureBuilder(
-        future: vaccinePhaseStatusData(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            return ListView.builder(
-                itemCount: snapshot.data.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    decoration: BoxDecoration(
-                        color: Theme.of(context).accentColor,
-                        borderRadius: BorderRadius.circular(20)),
-                    height: 100,
-                    margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text("In phase :" + snapshot.data[index].phase),
-                        Text("No. of candidates :" +
-                            snapshot.data[index].candidates),
-                      ],
-                    ),
-                  );
-                });
-          } else {
-            return Center(
-              child: Text("Loading..."),
-            );
-          }
-        });
-  }
-
-  Widget listVaccineDetails() {
-    return FutureBuilder(
-        future: vaccineDetails(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            return ListView.builder(
-                shrinkWrap: true,
-                itemCount: snapshot.data.length,
-                itemBuilder: (context, index) {
-                  return ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minHeight: 300,
-                      // maxHeight: 800,
-                    ),
-                    child: Container(
-                      padding: EdgeInsets.all(20),
+    return Container(
+      //color: Theme.of(context).primaryColor,
+      child: FutureBuilder(
+          future: vaccinePhaseStatusData(),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.hasData) {
+              return ListView.builder(
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (context, index) {
+                    return Container(
                       decoration: BoxDecoration(
                           boxShadow: [
-                            BoxShadow(blurRadius: 10, offset: Offset(4, 4))
+                            BoxShadow(
+                              blurRadius: 5,
+                              offset: Offset(4, 4),
+                              color: Theme.of(context).primaryColor,
+                              // color: Colors.white,
+                            ),
+                            BoxShadow(
+                              blurRadius: 5,
+                              offset: Offset(-4, -4),
+                              color: Theme.of(context).primaryColor,
+                              // color: Colors.white,
+                            ),
                           ],
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20)),
+                      height: 100,
                       margin:
                           EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
-                            snapshot.data[index].candidate,
+                            "No. of candidates : " +
+                                snapshot.data[index].candidates,
                             style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.w900),
-                          ),
-                          SizedBox(
-                            height: 20,
+                                color: Theme.of(context).primaryColor,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            "Developed By: " + snapshot.data[index].sponsors,
+                            "In phase :" + snapshot.data[index].phase,
                             style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.w700),
+                                color: Theme.of(context).primaryColor,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
                           ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                            "In phase :" + snapshot.data[index].trialPhase,
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.w700),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                            snapshot.data[index].details,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                            ),
-                          )
                         ],
                       ),
-                    ),
-                  );
-                });
-          } else {
-            return Center(
-              child: Text("Loading..."),
-            );
-          }
-        });
+                    );
+                  });
+            } else {
+              return Center(
+                child: Text("Loading..."),
+              );
+            }
+          }),
+    );
+  }
+
+  Widget listVaccineDetails() {
+    return Container(
+      //color: Theme.of(context).primaryColor,
+      child: FutureBuilder(
+          future: vaccineDetails(),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.hasData) {
+              return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (context, index) {
+                    return ConstrainedBox(
+                      constraints: BoxConstraints(
+                        minHeight: 300,
+                        // maxHeight: 800,
+                      ),
+                      child: Container(
+                        padding: EdgeInsets.all(25),
+                        margin:
+                            EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                        decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 5,
+                                offset: Offset(4, 4),
+                                color: Theme.of(context).primaryColor,
+                                // color: Colors.white,
+                              ),
+                              BoxShadow(
+                                blurRadius: 5,
+                                offset: Offset(-4, -4),
+                                color: Theme.of(context).primaryColor,
+                                // color: Colors.white,
+                              ),
+                            ],
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Column(
+                          children: [
+                            Text(
+                              snapshot.data[index].candidate,
+                              style: TextStyle(
+                                  fontSize: 24, fontWeight: FontWeight.w900),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              "Developed By: " + snapshot.data[index].sponsors,
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w700),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              "In phase :" + snapshot.data[index].trialPhase,
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w700),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              snapshot.data[index].details,
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    );
+                  });
+            } else {
+              return Center(
+                child: Text("Loading..."),
+              );
+            }
+          }),
+    );
   }
 }
