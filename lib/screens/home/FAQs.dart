@@ -1,4 +1,4 @@
-import 'package:Covid/services/staticData.dart';
+import 'package:Covid/shared/staticData.dart';
 import 'package:flutter/material.dart';
 
 class FaqsPage extends StatefulWidget {

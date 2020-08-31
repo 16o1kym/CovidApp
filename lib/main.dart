@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       value: AuthService().user,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'Covid Tracker',
         theme: ThemeData(
           primaryColor: Color(0xff1b262c),
           scaffoldBackgroundColor: Color(0xffF0F8FF),

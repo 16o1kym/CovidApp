@@ -1,4 +1,4 @@
-import 'package:Covid/models/brew.dart';
+import 'package:Covid/models/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Database {
@@ -6,7 +6,7 @@ class Database {
   Database({this.uid});
 
   final CollectionReference datascollection =
-      FirebaseFirestore.instance.collection("brews");
+      FirebaseFirestore.instance.collection("users");
 
   Future addUserData(String name, String sugar, int strength) async {
     return await datascollection.doc(uid).set({
@@ -18,9 +18,9 @@ class Database {
 
 //video 19 => if there's doubt .. watch video 18 and 19 :)
 
-  List<Brew> _brewListFromSnapshot(QuerySnapshot snapshot) {
+  List<UserData> _brewListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
-      return Brew(
+      return UserData(
           //if it will be a empty string .. give empty string => ??
           // name: doc.data['name'] ?? '',
           // sugar: doc.data['sugar'] ?? '0',
@@ -34,7 +34,7 @@ class Database {
   //   return datascollection.snapshots();
   // }
 
-  Stream<List<Brew>> get brews {
+  Stream<List<UserData>> get brews {
     return datascollection.snapshots().map((_brewListFromSnapshot));
   }
 }
