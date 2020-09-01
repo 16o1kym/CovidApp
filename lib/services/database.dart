@@ -8,11 +8,15 @@ class Database {
   final CollectionReference datascollection =
       FirebaseFirestore.instance.collection("users");
 
-  Future addUserData(String name, String sugar, int strength) async {
+  Future addUserData(String name, String gender, int age, String contact,
+      String city, String state) async {
     return await datascollection.doc(uid).set({
       'name': name,
-      'sugar': sugar,
-      'strength': strength,
+      'gender': gender,
+      'age': age,
+      'contact': contact,
+      'city': city,
+      'state': state,
     });
   }
 
