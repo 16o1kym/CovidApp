@@ -148,7 +148,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
           color: Theme.of(context).primaryColor,
         ),
         Icon(
-          Icons.clean_hands_outlined,
+          Icons.photo,
           color: Theme.of(context).primaryColor,
         ),
         Icon(
