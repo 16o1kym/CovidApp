@@ -51,11 +51,11 @@ class _ContinentpanelState extends State<Continentpanel> {
         Row(
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              child: Text("Continentwise Data",
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Text("Continent's Data",
                   style: TextStyle(
                       color: Theme.of(context).primaryColor,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w700,
                       fontSize: 26)),
             ),
           ],
@@ -72,7 +72,6 @@ class _ContinentpanelState extends State<Continentpanel> {
                     itemCount: snapshot.data.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
-                        //height: 150,
                         padding: EdgeInsets.all(10),
                         child: Row(
                           children: [
@@ -86,21 +85,30 @@ class _ContinentpanelState extends State<Continentpanel> {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text('Cases : ',
-                                        style: TextStyle(
-                                            color: Theme.of(context)
-                                                .scaffoldBackgroundColor)),
+                                    Text(
+                                      'Cases : ',
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .scaffoldBackgroundColor,
+                                          fontWeight: FontWeight.bold),
+                                    ),
                                     Text(snapshot.data[index].cases.toString(),
-                                        style: TextStyle(color: Colors.white)),
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold)),
                                     SizedBox(
                                       height: 10,
                                     ),
                                     Text(
                                       'Deaths : ',
-                                      style: TextStyle(color: Colors.red),
+                                      style: TextStyle(
+                                          color: Colors.red,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                     Text(snapshot.data[index].deaths.toString(),
-                                        style: TextStyle(color: Colors.white)),
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold)),
                                   ],
                                 ),
                               ),

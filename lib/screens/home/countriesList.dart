@@ -59,7 +59,7 @@ class _CountriesListState extends State<CountriesList> {
                             color: white,
                             borderRadius: BorderRadius.circular(20)),
                         margin:
-                            EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+                            EdgeInsets.symmetric(vertical: 4, horizontal: 6),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -69,7 +69,10 @@ class _CountriesListState extends State<CountriesList> {
                               width: 60,
                               child: CircleAvatar(
                                 backgroundColor: Theme.of(context).primaryColor,
-                                child: Text(snapshot.data[index].countryCode),
+                                child: Text(
+                                  snapshot.data[index].countryCode,
+                                  style: TextStyle(fontSize: 20),
+                                ),
                               ),
                             ),
                             Container(
@@ -83,11 +86,11 @@ class _CountriesListState extends State<CountriesList> {
                                             Shadow(
                                                 color: Theme.of(context)
                                                     .primaryColor,
-                                                blurRadius: 1,
-                                                offset: Offset(0.5, 0.5))
+                                                blurRadius: 0.5,
+                                                offset: Offset(0.25, 0.25))
                                           ],
                                           color: Theme.of(context).primaryColor,
-                                          fontSize: 16,
+                                          fontSize: 18,
                                           fontWeight: FontWeight.bold))
                                   : Text(
                                       snapshot.data[index].countryName
@@ -98,11 +101,11 @@ class _CountriesListState extends State<CountriesList> {
                                             Shadow(
                                                 color: Theme.of(context)
                                                     .primaryColor,
-                                                blurRadius: 1,
-                                                offset: Offset(0.5, 0.5))
+                                                blurRadius: 0.5,
+                                                offset: Offset(0.25, 0.25))
                                           ],
                                           color: Theme.of(context).primaryColor,
-                                          fontSize: 16,
+                                          fontSize: 18,
                                           fontWeight: FontWeight.bold)),
                             ),
                             Column(
@@ -114,7 +117,8 @@ class _CountriesListState extends State<CountriesList> {
                                       "Cases : ${snapshot.data[index].cases.toString()}",
                                       style: TextStyle(
                                           color: Colors.red,
-                                          fontWeight: FontWeight.bold)),
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15)),
                                 ),
                                 Container(
                                   padding: EdgeInsets.all(5),
@@ -122,15 +126,18 @@ class _CountriesListState extends State<CountriesList> {
                                       "Recovered : ${snapshot.data[index].recovered.toString()}",
                                       style: TextStyle(
                                           color: Colors.blueAccent,
-                                          fontWeight: FontWeight.bold)),
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15)),
                                 ),
                                 Container(
                                   padding: EdgeInsets.all(5),
                                   child: Text(
                                       "Deaths : ${snapshot.data[index].deaths.toString()}",
                                       style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold)),
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15,
+                                      )),
                                 ),
                               ],
                             ),
@@ -141,21 +148,28 @@ class _CountriesListState extends State<CountriesList> {
                   ),
                 );
               } else {
-                return Container(
-                  decoration: BoxDecoration(color: Colors.white),
-                  child: Center(
-                    child: Text(
-                      "Loading data...",
-                      style: TextStyle(
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CircularProgressIndicator(),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      Text(
+                        "Fetching data...",
+                        style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
-                          shadows: [
-                            Shadow(
-                                color: Colors.black,
-                                blurRadius: 20,
-                                offset: Offset(5, 10))
-                          ]),
-                    ),
+                          // shadows: [
+                          //   Shadow(
+                          //       color: Colors.black,
+                          //       blurRadius: 20,
+                          //       offset: Offset(5, 10))
+                          // ],
+                        ),
+                      ),
+                    ],
                   ),
                 );
               }
