@@ -1,3 +1,4 @@
+import 'package:Covid/screens/home/usersdataPage.dart';
 import 'package:Covid/screens/home/widgets/worldPanelhome.dart';
 import 'package:Covid/services/auth.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -90,11 +91,14 @@ Widget navigationBar(context) {
       } else if (index == 1) {
         //navigate to helpPage
       } else if (index == 2) {
+        //navigate to home screen
         Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));
       } else if (index == 3) {
         //search courses page
       } else {
         //navigate to update users data page and profile
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => UserInfoPage()));
       }
     },
   );

@@ -60,7 +60,7 @@ class AuthService {
           email: email, password: password);
       User user = result.user;
       await Database(uid: user.uid)
-          .addUserData("New member", "", 0, "", "", "");
+          .addUserData("New member", "", "", "", "", "");
 
       return _userFromFirebase(user);
     } catch (e) {

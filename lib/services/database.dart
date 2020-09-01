@@ -8,7 +8,7 @@ class Database {
   final CollectionReference datascollection =
       FirebaseFirestore.instance.collection("users");
 
-  Future addUserData(String name, String gender, int age, String contact,
+  Future addUserData(String name, String gender, String age, String contact,
       String city, String state) async {
     return await datascollection.doc(uid).set({
       'name': name,
@@ -20,25 +20,20 @@ class Database {
     });
   }
 
-//video 19 => if there's doubt .. watch video 18 and 19 :)
-
-  List<UserData> _brewListFromSnapshot(QuerySnapshot snapshot) {
-    return snapshot.docs.map((doc) {
-      return UserData(
-          //if it will be a empty string .. give empty string => ??
-          // name: doc.data['name'] ?? '',
-          // sugar: doc.data['sugar'] ?? '0',
-          // strength: doc.data['strength'] ?? 0,
-          );
-    }).toList();
+  Stream<IndividualUserData> get usersData {
+    return datascollection.doc(uid).snapshots().map(_userDataFromSnapshot);
   }
+  //method to get individual data
 
-//get brwews stream
-  // Stream<QuerySnapshot> get brews {
-  //   return datascollection.snapshots();
-  // }
-
-  Stream<List<UserData>> get brews {
-    return datascollection.snapshots().map((_brewListFromSnapshot));
+  IndividualUserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
+    return IndividualUserData(
+      uid: uid,
+      name: snapshot.data()['name'],
+      age: snapshot.data()['age'],
+      city: snapshot.data()['city'],
+      contact: snapshot.data()['contact'],
+      gender: snapshot.data()['gender'],
+      state: snapshot.data()['state'],
+    );
   }
 }
