@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Color(0xffF0F8FF),
           accentColor: Color(0xffbbe1fa),
           primarySwatch: Colors.blueGrey,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
+          //visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         //home: MyHomePage(title: 'Practicing Firebase'),
         home: Wrapper(),
