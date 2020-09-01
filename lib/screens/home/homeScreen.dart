@@ -92,7 +92,7 @@ Widget navigationBar(context) {
         //navigate to helpPage
       } else if (index == 2) {
         //navigate to home screen
-        Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));
+        //Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));
       } else if (index == 3) {
         //search courses page
       } else {

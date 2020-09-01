@@ -1,8 +1,11 @@
 import 'package:Covid/models/user.dart';
 import 'package:Covid/services/database.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'homeScreen.dart';
 
 class UserInfoPage extends StatefulWidget {
   UserInfoPage({Key key}) : super(key: key);
@@ -111,6 +114,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
                                 _currentcontact ?? userData.contact,
                                 _currentcity ?? userData.city,
                                 _currentstate ?? userData.state);
+                            Navigator.pop(context);
                           }
                         },
                         child: Text(
@@ -126,6 +130,57 @@ class _UserInfoPageState extends State<UserInfoPage> {
               }
             }),
       ),
+      bottomNavigationBar: navigationBar(context),
+    );
+  }
+
+  Widget navigationBar(context) {
+    return CurvedNavigationBar(
+      height: 50,
+      animationDuration: Duration(milliseconds: 200),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      color: Colors.white,
+      index: 4,
+      buttonBackgroundColor: Colors.white,
+      items: [
+        Icon(
+          Icons.fastfood,
+          color: Theme.of(context).primaryColor,
+        ),
+        Icon(
+          Icons.clean_hands_outlined,
+          color: Theme.of(context).primaryColor,
+        ),
+        Icon(
+          Icons.home,
+          color: Theme.of(context).primaryColor,
+        ),
+        Icon(
+          Icons.search,
+          color: Theme.of(context).primaryColor,
+        ),
+        Icon(
+          Icons.person,
+          color: Theme.of(context).primaryColor,
+        ),
+      ],
+      onTap: (index) {
+        if (index == 0) {
+          //navigate to restaurant nearby list
+        } else if (index == 1) {
+          //navigate to helpPage
+        } else if (index == 2) {
+          //navigate to home screen
+          Navigator.push(
+              context, MaterialPageRoute(builder: (_) => HomePage()));
+        } else if (index == 3) {
+          //search courses page
+        } else {
+          //navigate to update users data page and profile
+          // Navigator.push(
+          //     context, MaterialPageRoute(builder: (_) => UserInfoPage()));
+        }
+      },
     );
   }
 }
