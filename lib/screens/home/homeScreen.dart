@@ -1,3 +1,4 @@
+import 'package:Covid/screens/home/couponCodePage.dart';
 import 'package:Covid/screens/home/usersdataPage.dart';
 import 'package:Covid/screens/home/widgets/worldPanelhome.dart';
 import 'package:Covid/services/auth.dart';
@@ -43,6 +44,16 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: <Widget>[
               InfoBox(),
+              // buttton for coupon code page Temporary for now
+              FlatButton(
+                child: Text("Go to Coupon code page"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      new MaterialPageRoute(
+                          builder: (context) => CouponCodePage()));
+                },
+              ),
               WorldDatapanel(),
               Continentpanel(),
               Buttons(),
@@ -69,7 +80,7 @@ Widget navigationBar(context) {
         color: Theme.of(context).primaryColor,
       ),
       Icon(
-        Icons.clean_hands_outlined,
+        Icons.phone,
         color: Theme.of(context).primaryColor,
       ),
       Icon(
