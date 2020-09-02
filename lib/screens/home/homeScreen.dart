@@ -1,4 +1,5 @@
 import 'package:Covid/screens/home/couponCodePage.dart';
+import 'package:Covid/screens/home/findPeople.dart';
 import 'package:Covid/screens/home/usersdataPage.dart';
 import 'package:Covid/screens/home/widgets/worldPanelhome.dart';
 import 'package:Covid/services/auth.dart';
@@ -17,7 +18,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,17 +27,6 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         centerTitle: true,
         title: Text("Covid-19 Tracker"),
-        actions: [
-          FlatButton(
-            onPressed: () {
-              _auth.signOut();
-            },
-            child: Text(
-              "SignOut",
-              style: TextStyle(color: Colors.white),
-            ),
-          )
-        ],
       ),
       body: Container(
         padding: EdgeInsets.only(left: 6, right: 6, bottom: 10),
@@ -98,7 +87,9 @@ Widget navigationBar(context) {
         //navigate to home screen
         //Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));
       } else if (index == 3) {
-        //search courses page
+        //search people around page
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => FindPeople()));
       } else {
         //navigate to update users data page and profile
         Navigator.push(

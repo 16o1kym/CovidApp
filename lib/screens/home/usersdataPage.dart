@@ -1,10 +1,13 @@
 import 'package:Covid/models/user.dart';
+import 'package:Covid/screens/home/couponCodePage.dart';
+import 'package:Covid/services/auth.dart';
 import 'package:Covid/services/database.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'findPeople.dart';
 import 'homeScreen.dart';
 
 class UserInfoPage extends StatefulWidget {
@@ -16,6 +19,8 @@ class UserInfoPage extends StatefulWidget {
 
 class _UserInfoPageState extends State<UserInfoPage> {
   final _formKey = GlobalKey<FormState>();
+  AuthService _auth = AuthService();
+
   String _currentName;
   String _gender;
   String _age;
@@ -54,6 +59,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
                       ),
                       Text("Age"),
                       TextFormField(
+                        keyboardType: TextInputType.number,
                         initialValue: userData.age,
                         validator: (val) =>
                             val.isEmpty ? "Please enter your age" : null,
@@ -73,6 +79,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
                       ),
                       Text("Contact"),
                       TextFormField(
+                        keyboardType: TextInputType.number,
                         initialValue: userData.contact,
                         validator: (val) => val.isEmpty
                             ? "Please enter your contact number"
@@ -122,6 +129,19 @@ class _UserInfoPageState extends State<UserInfoPage> {
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      RaisedButton(
+                        color: Theme.of(context).primaryColor,
+                        onPressed: () {
+                          _auth.signOut();
+                        },
+                        child: Text(
+                          "SignOut",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      )
                     ],
                   ),
                 );
@@ -148,7 +168,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
           color: Theme.of(context).primaryColor,
         ),
         Icon(
-          Icons.photo,
+          Icons.local_offer_rounded,
           color: Theme.of(context).primaryColor,
         ),
         Icon(
@@ -169,12 +189,16 @@ class _UserInfoPageState extends State<UserInfoPage> {
           //navigate to restaurant nearby list
         } else if (index == 1) {
           //navigate to helpPage
+          Navigator.push(
+              context, MaterialPageRoute(builder: (_) => CouponCodePage()));
         } else if (index == 2) {
           //navigate to home screen
           Navigator.push(
               context, MaterialPageRoute(builder: (_) => HomePage()));
         } else if (index == 3) {
           //search courses page
+          Navigator.push(
+              context, MaterialPageRoute(builder: (_) => FindPeople()));
         } else {
           //navigate to update users data page and profile
           // Navigator.push(

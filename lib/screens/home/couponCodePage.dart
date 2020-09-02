@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:Covid/screens/home/findPeople.dart';
 import 'package:Covid/screens/home/homeScreen.dart';
 import 'package:Covid/screens/home/usersdataPage.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -19,7 +20,6 @@ class _CouponCodePageState extends State<CouponCodePage> {
   final _formkey = GlobalKey<FormState>();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _initCouponDialog();
   }
@@ -52,19 +52,19 @@ class _CouponCodePageState extends State<CouponCodePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                "Congrats! You have won a Coupon code",
+                "Congrats! You have won a Coupon code. Use it to get upto 60% off on Udemy courses!!!",
                 // style: TextStyle(
                 //     color: Theme.of(context).primaryColor, fontSize: 20),
               ),
               Text(
-                '${Random.secure().nextInt(1000)}',
+                'COV-SOL' + '${Random.secure().nextInt(1000)}',
                 // style: TextStyle(
                 //     color: Theme.of(context).primaryColor, fontSize: 20),
               ),
               SizedBox(
                 height: 40,
               ),
-              FlatButton(
+              RaisedButton(
                 // color: Theme.of(context).primaryColor,
                 onPressed: () {
                   _launchURL('https://udemy.com');
@@ -174,6 +174,8 @@ class _CouponCodePageState extends State<CouponCodePage> {
               context, MaterialPageRoute(builder: (_) => HomePage()));
         } else if (index == 3) {
           //search courses page
+          Navigator.push(
+              context, MaterialPageRoute(builder: (_) => FindPeople()));
         } else {
           //navigate to update users data page and profile
           Navigator.push(

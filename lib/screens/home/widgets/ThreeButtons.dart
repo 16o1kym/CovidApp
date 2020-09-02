@@ -1,10 +1,18 @@
 import 'package:Covid/screens/home/vaccinestatus.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../FAQs.dart';
 
 class Buttons extends StatelessWidget {
   const Buttons({Key key}) : super(key: key);
+  _launchURL(url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +25,19 @@ class Buttons extends StatelessWidget {
                     context, MaterialPageRoute(builder: (_) => FaqsPage()));
               },
               child: button(context, "FAQ(s)")),
-          GestureDetector(child: button(context, "Donate")),
-          GestureDetector(child: button(context, "Myth Buster")),
+          GestureDetector(
+            child: button(context, "Donate"),
+            onTap: () {
+              _launchURL('https://covid19responsefund.org/en/');
+            },
+          ),
+          GestureDetector(
+            child: button(context, "Myth Buster"),
+            onTap: () {
+              _launchURL(
+                  'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/myth-busters');
+            },
+          ),
           GestureDetector(
             child: button(context, "Vaccine Status"),
             onTap: () {
