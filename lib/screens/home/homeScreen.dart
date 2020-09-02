@@ -25,6 +25,7 @@ class _HomePageState extends State<HomePage> {
         child: ListView(),
       ),
       appBar: AppBar(
+        centerTitle: true,
         title: Text("Covid-19 Tracker"),
         actions: [
           FlatButton(
@@ -44,16 +45,6 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: <Widget>[
               InfoBox(),
-              // buttton for coupon code page Temporary for now
-              FlatButton(
-                child: Text("Go to Coupon code page"),
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      new MaterialPageRoute(
-                          builder: (context) => CouponCodePage()));
-                },
-              ),
               WorldDatapanel(),
               Continentpanel(),
               Buttons(),
@@ -80,7 +71,7 @@ Widget navigationBar(context) {
         color: Theme.of(context).primaryColor,
       ),
       Icon(
-        Icons.phone,
+        Icons.local_offer_sharp,
         color: Theme.of(context).primaryColor,
       ),
       Icon(
@@ -100,7 +91,9 @@ Widget navigationBar(context) {
       if (index == 0) {
         //navigate to restaurant nearby list
       } else if (index == 1) {
-        //navigate to helpPage
+        //navigate to offerspage
+        Navigator.push(context,
+            new MaterialPageRoute(builder: (context) => CouponCodePage()));
       } else if (index == 2) {
         //navigate to home screen
         //Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));

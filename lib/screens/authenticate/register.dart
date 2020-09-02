@@ -146,7 +146,7 @@ class _RegisterState extends State<Register> {
                               widget.toggleView();
                             },
                           ),
-                          Text(error),
+                          Center(child: Text(error)),
                         ],
                       ),
                     ),
