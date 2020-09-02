@@ -132,16 +132,16 @@ class _UserInfoPageState extends State<UserInfoPage> {
                       SizedBox(
                         height: 20,
                       ),
-                      RaisedButton(
-                        color: Theme.of(context).primaryColor,
-                        onPressed: () {
-                          _auth.signOut();
-                        },
-                        child: Text(
-                          "SignOut",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      )
+                      // RaisedButton(
+                      //   color: Theme.of(context).primaryColor,
+                      //   onPressed: () {
+                      //     _auth.signOut();
+                      //   },
+                      //   child: Text(
+                      //     "SignOut",
+                      //     style: TextStyle(color: Colors.white),
+                      //   ),
+                      // )
                     ],
                   ),
                 );

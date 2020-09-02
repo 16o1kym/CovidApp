@@ -125,6 +125,7 @@ class _FindPeopleState extends State<FindPeople> {
                         borderRadius: BorderRadius.circular(50),
                         gradient: LinearGradient(colors: [
                           Theme.of(context).primaryColor,
+                          Theme.of(context).primaryColor,
                           Theme.of(context).accentColor,
                         ], begin: Alignment.topLeft, end: Alignment.topRight),
                       ),
@@ -159,6 +160,7 @@ class _FindPeopleState extends State<FindPeople> {
                         borderRadius: BorderRadius.circular(50),
                         gradient: LinearGradient(colors: [
                           Theme.of(context).primaryColor,
+                          Theme.of(context).primaryColor,
                           Theme.of(context).accentColor
                         ], end: Alignment.topLeft, begin: Alignment.topRight),
                       ),
@@ -167,38 +169,36 @@ class _FindPeopleState extends State<FindPeople> {
                           showDialog(
                               context: context,
                               builder: (context) {
-                                return Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      AlertDialog(
-                                        title: Text("Don't worry " +
-                                            userData.name +
-                                            ". We are looking for people in your locality who are willing to help and will contact you as soon as possible. Feel free to contact us in an emergency. Stay strong."),
-                                      ),
-                                      SizedBox(
-                                        height: 20,
-                                      ),
-                                      RaisedButton(
-                                        color: Colors.red,
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                          showDialog(
-                                              context: context,
-                                              builder: (context) {
-                                                return AlertDialog(
-                                                  title: Text(userData.name +
-                                                      ", you will be contacted soon. Please explain your issue so we can help you."),
-                                                );
-                                              });
-                                        },
-                                        child: Text(
-                                          "Emergency",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
+                                return AlertDialog(
+                                  title: Text("Don't worry " +
+                                      userData.name +
+                                      ". We are looking for people in your locality who are willing to help and will contact you as soon as possible. Feel free to contact us in an emergency. Stay strong."),
+                                  actions: [
+                                    RaisedButton(
+                                      color: Colors.red,
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) {
+                                            return AlertDialog(
+                                              title: Text(userData.name +
+                                                  ", you will be contacted soon. Please explain your issue on the call so we can help you."),
+                                            );
+                                          },
+                                        );
+                                      },
+                                      child: Text(
+                                        "Emergency",
+                                        style: TextStyle(
+                                          color: Colors.white,
                                         ),
                                       ),
-                                    ]);
+                                    ),
+                                    FlatButton(
+                                        onPressed: () {}, child: Container()),
+                                  ],
+                                );
                               });
                         },
                         child: Text(

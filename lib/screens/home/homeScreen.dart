@@ -18,6 +18,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,6 +28,16 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         centerTitle: true,
         title: Text("Covid-19 Tracker"),
+        actions: [
+          FlatButton(
+              onPressed: () {
+                _auth.signOut();
+              },
+              child: Text(
+                "Logout",
+                style: TextStyle(color: Colors.white),
+              ))
+        ],
       ),
       body: Container(
         padding: EdgeInsets.only(left: 6, right: 6, bottom: 10),
