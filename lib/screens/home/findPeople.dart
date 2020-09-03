@@ -1,4 +1,5 @@
 import 'package:Covid/models/user.dart';
+import 'package:Covid/screens/home/postStatus.dart';
 import 'package:Covid/screens/home/usersdataPage.dart';
 import 'package:Covid/services/database.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -255,7 +256,7 @@ Widget navigationBar(context) {
     buttonBackgroundColor: Colors.white,
     items: [
       Icon(
-        Icons.fastfood,
+        Icons.post_add,
         color: Theme.of(context).primaryColor,
       ),
       Icon(
@@ -277,7 +278,7 @@ Widget navigationBar(context) {
     ],
     onTap: (index) {
       if (index == 0) {
-        //navigate to restaurant nearby list
+        Navigator.push(context, MaterialPageRoute(builder: (_) => Posts()));
       } else if (index == 1) {
         //navigate to offerspage
         Navigator.push(context,

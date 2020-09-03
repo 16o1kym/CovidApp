@@ -1,6 +1,7 @@
 import 'package:Covid/models/user.dart';
 import 'package:Covid/screens/home/couponCodePage.dart';
-import 'package:Covid/services/auth.dart';
+import 'package:Covid/screens/home/postStatus.dart';
+// import 'package:Covid/services/auth.dart';
 import 'package:Covid/services/database.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -19,7 +20,7 @@ class UserInfoPage extends StatefulWidget {
 
 class _UserInfoPageState extends State<UserInfoPage> {
   final _formKey = GlobalKey<FormState>();
-  AuthService _auth = AuthService();
+  // AuthService _auth = AuthService();
 
   String _currentName;
   String _gender;
@@ -71,7 +72,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
                       Text("Gender"),
                       TextFormField(
                         initialValue: userData.gender,
-                        validator: (val) => val.isEmpty ? "Ypur gender" : null,
+                        validator: (val) => val.isEmpty ? "Your gender" : null,
                         onChanged: (val) => setState(() => _gender = val),
                       ),
                       SizedBox(
@@ -132,16 +133,6 @@ class _UserInfoPageState extends State<UserInfoPage> {
                       SizedBox(
                         height: 20,
                       ),
-                      // RaisedButton(
-                      //   color: Theme.of(context).primaryColor,
-                      //   onPressed: () {
-                      //     _auth.signOut();
-                      //   },
-                      //   child: Text(
-                      //     "SignOut",
-                      //     style: TextStyle(color: Colors.white),
-                      //   ),
-                      // )
                     ],
                   ),
                 );
@@ -164,7 +155,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
       buttonBackgroundColor: Colors.white,
       items: [
         Icon(
-          Icons.fastfood,
+          Icons.post_add,
           color: Theme.of(context).primaryColor,
         ),
         Icon(
@@ -186,7 +177,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
       ],
       onTap: (index) {
         if (index == 0) {
-          //navigate to restaurant nearby list
+          Navigator.push(context, MaterialPageRoute(builder: (_) => Posts()));
         } else if (index == 1) {
           //navigate to helpPage
           Navigator.push(

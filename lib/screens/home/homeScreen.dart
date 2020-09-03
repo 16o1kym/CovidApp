@@ -1,5 +1,6 @@
 import 'package:Covid/screens/home/couponCodePage.dart';
 import 'package:Covid/screens/home/findPeople.dart';
+import 'package:Covid/screens/home/postStatus.dart';
 import 'package:Covid/screens/home/usersdataPage.dart';
 import 'package:Covid/screens/home/widgets/worldPanelhome.dart';
 import 'package:Covid/services/auth.dart';
@@ -67,7 +68,7 @@ Widget navigationBar(context) {
     buttonBackgroundColor: Colors.white,
     items: [
       Icon(
-        Icons.fastfood,
+        Icons.post_add,
         color: Theme.of(context).primaryColor,
       ),
       Icon(
@@ -89,7 +90,7 @@ Widget navigationBar(context) {
     ],
     onTap: (index) {
       if (index == 0) {
-        //navigate to restaurant nearby list
+        Navigator.push(context, MaterialPageRoute(builder: (_) => Posts()));
       } else if (index == 1) {
         //navigate to offerspage
         Navigator.push(context,

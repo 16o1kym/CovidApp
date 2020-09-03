@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:Covid/screens/home/findPeople.dart';
 import 'package:Covid/screens/home/homeScreen.dart';
+import 'package:Covid/screens/home/postStatus.dart';
 import 'package:Covid/screens/home/usersdataPage.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
@@ -93,7 +94,7 @@ class _CouponCodePageState extends State<CouponCodePage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text("Exciting Offers!!"),
+        title: Text("Take your skills to a new level "),
       ),
       body: Column(
         children: [
@@ -141,7 +142,7 @@ class _CouponCodePageState extends State<CouponCodePage> {
       buttonBackgroundColor: Colors.white,
       items: [
         Icon(
-          Icons.fastfood,
+          Icons.post_add,
           color: Theme.of(context).primaryColor,
         ),
         Icon(
@@ -163,7 +164,7 @@ class _CouponCodePageState extends State<CouponCodePage> {
       ],
       onTap: (index) {
         if (index == 0) {
-          //navigate to restaurant nearby list
+          Navigator.push(context, MaterialPageRoute(builder: (_) => Posts()));
         } else if (index == 1) {
           //navigate to offerspage
           // Navigator.push(context,

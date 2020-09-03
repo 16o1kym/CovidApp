@@ -36,4 +36,16 @@ class Database {
       state: snapshot.data()['state'],
     );
   }
+
+  final CollectionReference posts =
+      FirebaseFirestore.instance.collection("posts");
+  Future addPost(
+      String name, String subject, String content, String contact) async {
+    return posts.doc().set({
+      'name': name,
+      'subject': subject,
+      'content': content,
+      'contact': contact,
+    });
+  }
 }
