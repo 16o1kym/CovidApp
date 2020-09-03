@@ -1,3 +1,4 @@
+import 'package:Covid/screens/authenticate/sign_in.dart';
 import 'package:Covid/screens/home/couponCodePage.dart';
 import 'package:Covid/screens/home/findPeople.dart';
 import 'package:Covid/screens/home/postStatus.dart';
@@ -33,6 +34,8 @@ class _HomePageState extends State<HomePage> {
           FlatButton(
               onPressed: () {
                 _auth.signOut();
+                Navigator.pushReplacement(context,
+                    new MaterialPageRoute(builder: (context) => SignIn()));
               },
               child: Text(
                 "Logout",
@@ -68,11 +71,11 @@ Widget navigationBar(context) {
     buttonBackgroundColor: Colors.white,
     items: [
       Icon(
-        Icons.post_add,
+        Icons.add,
         color: Theme.of(context).primaryColor,
       ),
       Icon(
-        Icons.local_offer_sharp,
+        Icons.local_offer,
         color: Theme.of(context).primaryColor,
       ),
       Icon(
@@ -93,18 +96,18 @@ Widget navigationBar(context) {
         Navigator.push(context, MaterialPageRoute(builder: (_) => Posts()));
       } else if (index == 1) {
         //navigate to offerspage
-        Navigator.push(context,
+        Navigator.pushReplacement(context,
             new MaterialPageRoute(builder: (context) => CouponCodePage()));
       } else if (index == 2) {
         //navigate to home screen
         //Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage()));
       } else if (index == 3) {
         //search people around page
-        Navigator.push(
+        Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (_) => FindPeople()));
       } else {
         //navigate to update users data page and profile
-        Navigator.push(
+        Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (_) => UserInfoPage()));
       }
     },
