@@ -142,11 +142,11 @@ class _CouponCodePageState extends State<CouponCodePage> {
       buttonBackgroundColor: Colors.white,
       items: [
         Icon(
-          Icons.post_add,
+          Icons.add,
           color: Theme.of(context).primaryColor,
         ),
         Icon(
-          Icons.local_offer_sharp,
+          Icons.local_offer,
           color: Theme.of(context).primaryColor,
         ),
         Icon(
@@ -164,22 +164,23 @@ class _CouponCodePageState extends State<CouponCodePage> {
       ],
       onTap: (index) {
         if (index == 0) {
-          Navigator.push(context, MaterialPageRoute(builder: (_) => Posts()));
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (_) => Posts()));
         } else if (index == 1) {
           //navigate to offerspage
           // Navigator.push(context,
           //     new MaterialPageRoute(builder: (context) => CouponCodePage()));
         } else if (index == 2) {
           //navigate to home screen
-          Navigator.push(
+          Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (_) => HomePage()));
         } else if (index == 3) {
           //search courses page
-          Navigator.push(
+          Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (_) => FindPeople()));
         } else {
           //navigate to update users data page and profile
-          Navigator.push(
+          Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (_) => UserInfoPage()));
         }
       },

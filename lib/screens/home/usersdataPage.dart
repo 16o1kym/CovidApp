@@ -156,11 +156,11 @@ class _UserInfoPageState extends State<UserInfoPage> {
       buttonBackgroundColor: Colors.white,
       items: [
         Icon(
-          Icons.post_add,
+          Icons.add,
           color: Theme.of(context).primaryColor,
         ),
         Icon(
-          Icons.local_offer_rounded,
+          Icons.local_offer,
           color: Theme.of(context).primaryColor,
         ),
         Icon(
@@ -178,18 +178,19 @@ class _UserInfoPageState extends State<UserInfoPage> {
       ],
       onTap: (index) {
         if (index == 0) {
-          Navigator.push(context, MaterialPageRoute(builder: (_) => Posts()));
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (_) => Posts()));
         } else if (index == 1) {
           //navigate to helpPage
-          Navigator.push(
+          Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (_) => CouponCodePage()));
         } else if (index == 2) {
           //navigate to home screen
-          Navigator.push(
+          Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (_) => HomePage()));
         } else if (index == 3) {
           //search courses page
-          Navigator.push(
+          Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (_) => FindPeople()));
         } else {
           //navigate to update users data page and profile
