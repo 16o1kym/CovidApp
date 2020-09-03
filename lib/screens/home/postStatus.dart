@@ -4,6 +4,7 @@ import 'package:Covid/shared/loading.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'couponCodePage.dart';
 import 'findPeople.dart';
@@ -18,6 +19,11 @@ class Posts extends StatefulWidget {
 
 class _PostsState extends State<Posts> {
   @override
+  void initState() {
+    super.initState();
+    SystemChrome.setEnabledSystemUIOverlays([]);
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

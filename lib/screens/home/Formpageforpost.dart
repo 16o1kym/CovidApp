@@ -1,5 +1,6 @@
 import 'package:Covid/services/database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class FormForPost extends StatefulWidget {
   FormForPost({Key key}) : super(key: key);
@@ -15,6 +16,11 @@ class _FormForPostState extends State<FormForPost> {
   String _content;
   String _contact;
   @override
+  void initState() {
+    super.initState();
+    SystemChrome.setEnabledSystemUIOverlays([]);
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

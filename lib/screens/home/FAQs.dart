@@ -1,5 +1,6 @@
 import 'package:Covid/shared/staticData.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class FaqsPage extends StatefulWidget {
   FaqsPage({Key key}) : super(key: key);
@@ -10,6 +11,11 @@ class FaqsPage extends StatefulWidget {
 
 class _FaqsPageState extends State<FaqsPage> {
   @override
+  void initState() {
+    super.initState();
+    SystemChrome.setEnabledSystemUIOverlays([]);
+  }
+
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(

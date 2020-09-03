@@ -5,6 +5,7 @@ import 'package:Covid/services/database.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import 'couponCodePage.dart';
@@ -19,6 +20,11 @@ class FindPeople extends StatefulWidget {
 
 class _FindPeopleState extends State<FindPeople> {
   @override
+  void initState() {
+    super.initState();
+    SystemChrome.setEnabledSystemUIOverlays([]);
+  }
+
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
 

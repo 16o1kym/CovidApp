@@ -7,6 +7,7 @@ import 'package:Covid/screens/home/widgets/worldPanelhome.dart';
 import 'package:Covid/services/auth.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'widgets/ThreeButtons.dart';
 import 'widgets/continentData.dart';
@@ -22,6 +23,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   AuthService _auth = AuthService();
   @override
+  void initState() {
+    super.initState();
+    SystemChrome.setEnabledSystemUIOverlays([]);
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(

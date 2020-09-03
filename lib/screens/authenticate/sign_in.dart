@@ -1,6 +1,7 @@
 import 'package:Covid/services/auth.dart';
 import 'package:Covid/shared/loading.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class SignIn extends StatefulWidget {
   //set the property with name toggleView
@@ -21,10 +22,16 @@ class _SignInState extends State<SignIn> {
   bool loading = false;
 
   @override
+  void initState() {
+    super.initState();
+    SystemChrome.setEnabledSystemUIOverlays([]);
+  }
+
   Widget build(BuildContext context) {
     return loading
         ? Loading()
         : Scaffold(
+            resizeToAvoidBottomPadding: false,
             appBar: AppBar(
               centerTitle: true,
               title: Text(
