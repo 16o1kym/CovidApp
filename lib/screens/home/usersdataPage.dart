@@ -34,8 +34,9 @@ class _UserInfoPageState extends State<UserInfoPage> {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         automaticallyImplyLeading: false,
-        title: Text("       Your Details"),
+        title: Text("Your Details"),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
